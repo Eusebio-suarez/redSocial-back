@@ -10,13 +10,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity//definir la colase como una entidad
 @Data//geters y setters con lombuk
 @Table(name="usuarios")//nombre de la tabla en la base de datos
-@Builder//permite usar el patron builder contructores
+@Builder//permite usar el patron builder 
+@NoArgsConstructor   //Constructor vacio
+@AllArgsConstructor //constructor con todos los campos
 public class Usuario {
     
     @Id//clave primaride la tabla
@@ -39,7 +43,8 @@ public class Usuario {
     @Size(min=8,max=20,message="la contraseña debe tener minimo 4 y maximo 20 caracteres")
     private String contraseña;
 
-    @Column(name="fecha_creacion")
+    //se evitita que se actualize la fecha cuando se cambia ekl registro
+    @Column(name = "fecha_creacion", updatable=false)
     private LocalDateTime fechaCreacion;
 
 }

@@ -1,5 +1,6 @@
 package com.redSocial.redSocial.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +41,7 @@ public class UsuarioService {
                         .nombre(usuarioRequestDto.getNombre())
                         .correo(usuarioRequestDto.getCorreo())
                         .contraseña(usuarioRequestDto.getContraseña())
+                        .fechaCreacion(LocalDateTime.now())
                         .build();
 
         //registar un nuevo usuario en la base de datos para poder obtener su id y fecha de creacion
