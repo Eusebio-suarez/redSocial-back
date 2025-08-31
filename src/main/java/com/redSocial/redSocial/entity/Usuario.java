@@ -1,12 +1,15 @@
 package com.redSocial.redSocial.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -42,6 +45,13 @@ public class Usuario {
     @NotBlank // valida que el cmapo no este vacio
     @Size(min=8,max=20,message="la contraseña debe tener minimo 4 y maximo 20 caracteres")
     private String contraseña;
+
+    //relacion de muchos a uno con la tabla de posts
+    //Ese "usuario" es el nombre exacto del atributo que debe tener la clase Post
+    //si se hace una modificacion con el usuario el los ports tambien dse modificaran si se elimina el usuario los posts tambien
+    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL)
+    //lsita de posts
+    List<Post> posts;
 
     //se evitita que se actualize la fecha cuando se cambia ekl registro
     @Column(name = "fecha_creacion", updatable=false)
