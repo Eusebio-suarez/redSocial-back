@@ -1,6 +1,7 @@
-package com.redSocial.controllers;
+package com.redSocial.redSocial.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +13,10 @@ import com.redSocial.redSocial.dto.UsuarioDTO;
 import com.redSocial.redSocial.services.UsuarioService;
 
 @RestController// definir la clase como un controllador 
-@RequestMapping("/usuarios") //ruta inicial para el controllador
+@RequestMapping("/users") //ruta inicial para el controllador
 public class UsuarioController {
     @Autowired // evita usar el constructor directamente
     private UsuarioService usuarioService;
-
 
     //emdoint para obtener los usuarios
     @GetMapping("")
@@ -28,3 +28,4 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(usuarios);
     }
 }
+
