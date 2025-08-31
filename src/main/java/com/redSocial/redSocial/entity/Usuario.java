@@ -10,11 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity//definir la colase como una entidad
 @Data//geters y setters con lombuk
 @Table(name="usuarios")//nombre de la tabla en la base de datos
+@Builder//permite usar el patron builder contructores
 public class Usuario {
     
     @Id//clave primaride la tabla

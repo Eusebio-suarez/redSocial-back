@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.redSocial.redSocial.dto.UsuarioDTO;
+import com.redSocial.redSocial.dto.UsuarioResponseDTO;
 import com.redSocial.redSocial.services.UsuarioService;
 
 @RestController// definir la clase como un controllador 
@@ -20,9 +19,9 @@ public class UsuarioController {
 
     //emdoint para obtener los usuarios
     @GetMapping("")
-    public ResponseEntity<List<UsuarioDTO>> obtenerUsuarios(){
+    public ResponseEntity<List<UsuarioResponseDTO>> obtenerUsuarios(){
         //buscar los usuarios con el servicio        
-        List<UsuarioDTO> usuarios = usuarioService.obtenerUsuarios();
+        List<UsuarioResponseDTO> usuarios = usuarioService.obtenerUsuarios();
 
         //devolver un estado 200 con los usuarios
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(usuarios);
