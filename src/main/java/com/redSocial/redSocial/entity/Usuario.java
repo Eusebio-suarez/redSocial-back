@@ -53,6 +53,12 @@ public class Usuario {
     //lsita de posts
     List<Post> posts;
 
+    //hacer la relacion con al entidad de likes
+    //el mappedBy especifica el campo que debe tener la tabla entidad de likes
+    @OneToMany(mappedBy="usuario",cascade=CascadeType.ALL)
+    //likes del usuario
+    List<Like> likes;
+
     //se evitita que se actualize la fecha cuando se cambia ekl registro
     @Column(name = "fecha_creacion", updatable=false)
     private LocalDateTime fechaCreacion;
